@@ -24,6 +24,9 @@ document.querySelectorAll(".anchor").forEach(anchor => {
 	});
 });
 
+
+
+
 /* Panels */
 const panels = gsap.utils.toArray("#panels-container .panel");
 tween = gsap.to(panels, {
@@ -77,7 +80,7 @@ function horizontalLoop(items, config) {
     xPercents = [],
     curIndex = 0,
     pixelsPerSecond = (config.speed || 1) * 100,
-    snap = config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1), // some browsers shift by a pixel to accommodate flex layouts, so for example if width is 20% the first element's width might be 242px, and the next 243px, alternating back and forth. So we snap to 5 percentage points to make things look more natural
+    snap = config.snap === false ? (v) => v : gsap.utils.snap(config.snap || 1), 
     totalWidth,
     curX,
     distanceToStart,
@@ -85,7 +88,7 @@ function horizontalLoop(items, config) {
     item,
     i;
   gsap.set(items, {
-    // convert "x" to "xPercent" to make things responsive, and populate the widths/xPercents Arrays to make lookups faster.
+    
     xPercent: (i, el) => {
       let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
       xPercents[i] = snap(
@@ -138,11 +141,10 @@ function horizontalLoop(items, config) {
   function toIndex(index, vars) {
     vars = vars || {};
     Math.abs(index - curIndex) > length / 2 &&
-      (index += index > curIndex ? -length : length); // always go in the shortest direction
+      (index += index > curIndex ? -length : length); 
     let newIndex = gsap.utils.wrap(0, length, index),
       time = times[newIndex];
     if (time > tl.time() !== index > curIndex) {
-      // if we're wrapping the timeline's playhead, make the proper adjustments
       vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
       time += tl.duration() * (index > curIndex ? 1 : -1);
     }
@@ -166,6 +168,132 @@ function horizontalLoop(items, config) {
 
 
 
+  /*timeline*/
+  document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.timeline-button');
+    const contentDisplay = document.getElementById('content-display');
+    const itemsToShow = 5;
 
+    function updateTimeline(index) {
+        const startIndex = Math.max(0, index - Math.floor(itemsToShow / 2));
+        buttons.forEach((button, i) => {
+            const parent = button.parentElement;
+            if (i >= startIndex && i < startIndex + itemsToShow) {
+                parent.classList.add('active');
+            } else {
+                parent.classList.remove('active');
+            }
+        });
+    }
 
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+            const content = this.parentElement.getAttribute('data-content');
+            contentDisplay.textContent = content;
+            updateTimeline(index);
 
+            // Reset font color and size for all buttons
+            buttons.forEach(btn => {
+                btn.style.color = '#000'; // Black color
+                btn.style.fontSize = '20px'; // Default font size
+            });
+
+            // Set font color and size for the clicked button
+            this.style.color = '#FFB90F'; // Dark golden yellow color
+            this.style.fontSize = '50px'; // Font size 20px
+        });
+    });
+
+    // Initialize to show the first 5 items by default
+    updateTimeline(0);
+
+    // Trigger click event on the button for 1985
+    buttons[0].click();
+});
+
+/*Tower Of Hanoi*/
+
+document.addEventListener('DOMContentLoaded', () => {
+  const towers = document.querySelectorAll('.tower');
+  const disks = [5,4,3,2,1].map(size => createDisk(size));
+  let selectedDisk = null;
+  let moves = 0;
+  const messageElement = document.getElementById('message');
+
+  towers[0].append(...disks);
+
+  towers.forEach(tower => {
+      tower.addEventListener('click', () => {
+          if (selectedDisk) {
+              if (canPlaceDisk(tower, selectedDisk)) {
+                  tower.appendChild(selectedDisk);
+                  selectedDisk = null;
+                  moves++;
+                  checkGameEnd();
+              }
+          } else {
+              selectedDisk = tower.lastElementChild;
+              if (selectedDisk) {
+                  tower.removeChild(selectedDisk);
+              }
+          }
+      });
+  });
+
+  function createDisk(size) {
+      const disk = document.createElement('div');
+      disk.classList.add('disk');
+      disk.style.width = `${size * 30}px`; // Adjust width for more disks
+      disk.dataset.size = size;
+      return disk;
+  }
+
+  function canPlaceDisk(tower, disk) {
+      const topDisk = tower.lastElementChild;
+      if (!topDisk || topDisk.dataset.size > disk.dataset.size) {
+          return true;
+      }
+      return false;
+  }
+
+  function checkGameEnd() {
+      if (towers[1].children.length === 1 || towers[2].children.length === 1) {
+          messageElement.textContent = `恭喜過關 總共移動了 ${moves} 步`;
+          towers.forEach(tower => {
+              tower.replaceWith(tower.cloneNode(true));  // Remove event listeners
+          });
+      }
+  }
+});
+
+/*contact me */
+
+reset;
+$('#send').click(send);
+$('#reset').click(reset);
+$('#reset,#msg2').hide();
+rul=/^\w+((-\w+)|(\.\w+))*\@\w+((-\.|)\w+)*\.[A-Za-z]+$/;
+	function send(){
+		if($('#name').val()=="")alert("請輸入您的姓名");
+		else{
+		if($('#mail').val()==""||mail.value.search(rul)==-1)alert("請輸入正確的電子郵件");
+			else{
+		if($('#bd').val()=="")alert("請輸入您的留言");
+				else{
+					$('#name,#mail,#bd,#send,#msg1').hide();
+					$('#name1,#mai1l,#bd1,#reset,#msg2').show();
+					$('#name1').html($('#name').val());
+					$('#mail1').html($('#mail').val());
+					$('#bd1').html($('#bd').val());
+				}
+				
+			}
+			
+		}
+	}
+	function reset(){
+					$('#name,#mail,#bd,#send,#msg1').show();
+					$('#name1,#mai1l,#bd1,#reset,#msg2').hide();
+					$('#name,#mail,#bd').val("");
+		
+	}

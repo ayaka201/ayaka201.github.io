@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/codepen.css">    
     <link rel="stylesheet" href="stylt.css">
+
 </head>
 <body>
         <div id="page" class="site">
@@ -21,8 +22,10 @@
                 <li><a href="#intro" class="anchor">首頁</a></li>
                 <li><a href="#panel-1" class="anchor">關於我</a></li>
                 <li><a href="#panel-2" class="anchor">論文發表</a></li>
-                <li><a href="#panel-3" class="anchor">相關報導</a></li>
-                <li><a href="#map" class="anchor">聯絡我</a></li>
+                <li><a href="#panel-3" class="anchor">學術成就</a></li>
+                <li><a href="#panel-4" class="anchor">小遊戲</a></li>
+                <li><a href="#panel-5" class="anchor">聯絡我</a></li>
+                <li><a href="#map" class="anchor"></a></li>
             </ul>
             </nav>
             </header>
@@ -152,49 +155,104 @@
                     </div>
                 </article>
 
-                <article id="panel-3" class="panel full-screen">
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-6">
-        
-                        <img src="" alt="">
-        
+                <article id="panel-3" class="panel full-screen bg01">
+                    
+                        <div class="timeline-display">
+                            <div class="timeline-container">
+                                <div class="timeline">
+                                    <div class="timeline-item" data-content="畢業後拿到全額獎學金到美國史丹佛大學攻讀數學系博士">
+                                        <button class="timeline-button">1985</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="美國Alfred P. Sloan博士論文獎助">
+                                        <button class="timeline-button">1991</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="行政院國家科學委員會 傑出研究獎&#10; 畢業後至普林斯頓高等研究院工作">
+                                        <button class="timeline-button">1992</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="國立台灣大學 全校教學優良教師">
+                                        <button class="timeline-button">1998</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="國立台灣大學理學院 青年學人獎">
+                                        <button class="timeline-button">1999</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="北區理論科學研究中心榮譽研究員">
+                                        <button class="timeline-button">2008</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="科技部傑出研究獎">
+                                        <button class="timeline-button">2011</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="獲聘為臺灣大學特聘教授">
+                                        <button class="timeline-button">2012</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="第59屆教育部學術獎">
+                                        <button class="timeline-button">2015</button>
+                                    </div>
+                                    <div class="timeline-item" data-content="第12屆台灣傑出女科學家獎">
+                                        <button class="timeline-button">2019</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="content-display" class="content-display"></div>
                         </div>
-                        <div class="col-6 d-flex flex-column">
-        
-                        
-                        </div>
-                    </div>
-                    </div>
+                    
+
+<!--盒內塔-->
                 </article>
                 <article id="panel-4" class="panel full-screen">
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-6">
-        
-                        <img src="" alt="">
-        
+                    <div class="game-display01">
+                        <div class="game">
+                            <div class="game01">
+                                <p>河內塔 <br>
+                                遊戲規則</p> 
+                            </div>
+                            <hr noshade="">
+                            <div class="game02">
+                                <p>規則如下： <br>
+
+                                    1、每次只能移動一個圓盤。<br>
+                                    2、每次移動可以將一個圓盤從任意一根柱子的頂端移到另一根柱子的頂端。<br>
+                                    3、在移動過程中，大盤子不能放在小盤子之上。<br>
+                                    4、目標是將所有圓盤從起始柱子移動到目標柱子。<br>                               
+                                
+                            </div>
                         </div>
-                        <div class="col-6 d-flex flex-column">
-        
                         
+                    
+
+                        <div class="game-display02">
+                            <div class="container">
+                                <div class="tower" id="tower1"></div>
+                                <div class="tower" id="tower2"></div>
+                                <div class="tower" id="tower3"></div>     
+                                <div class="floor"></div>
+                            </div>
+                            <div id="message"></div>
                         </div>
-                    </div>
-                    </div>
+                </div>
                 </article>
+
+<!--聯絡我-->
                 <article id="panel-5" class="panel full-screen">
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-6">
-        
-                        <img src="" alt="">
-        
-                        </div>
-                        <div class="col-6 d-flex flex-column">
-        
-                        </div>
+                    
+                    <div>
+                        <form method="post"  class="table-display">
+                            <label for="name">姓名：</label>
+                            <input type="text" id="name" name="name" required>
+                        
+                            <label for="email">電子信箱：</label>
+                            <input type="email" id="email" name="email" required>
+                        
+                            <label for="phone">電話：</label>
+                            <input type="tel" id="phone" name="phone">
+                        
+                            <label for="message">留言：</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        
+                            <button type="submit" value="SEND" id="send">提交</button>
+                        </form>
                     </div>
-                    </div>
+
+
                 </article>
                 </div>
             </section>
@@ -204,13 +262,13 @@
             </main>
         
         </div>
+        
         <script src="js/gsap.min.js" type="text/javascript"></script>
         <script src="js/jquery-2.2.4.js" type="text/javascript"></script>
         <script src="js/ScrollToPlugin.min.js" type="text/javascript"></script>
         <script src="js/ScrollTrigger.min.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        
         <script src="js/main.js" type="text/javascript"></script>
 </body>
 </html>
