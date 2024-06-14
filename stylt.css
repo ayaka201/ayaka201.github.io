@@ -48,6 +48,13 @@
     padding: 1rem 2rem;
     }
 
+    .bg01{
+        background-image: url(images/bg01.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+    }
 
     #panels #panels-container {
     height: 100vh;
@@ -151,7 +158,7 @@
         text-decoration: none;
     } 
     li a:hover {
-        color: wheat;
+        color:  #FFB90F;
         text-decoration: none;
         transition:all .3s ease-in-out;
     }
@@ -264,3 +271,164 @@
         color: #f00;
         transition:all .3s ease-in-out;
     }
+
+    /*timeline*/
+
+    .timeline-display{
+        margin-top: 100px;
+        display: flex;
+        flex-direction:row;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+.timeline-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+    white-space: pre-line;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 150px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.timeline-item {
+    display: none;
+}
+
+.timeline-item.active {
+    display: block;
+}
+
+.timeline-button {
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin: 5px;
+    white-space: pre-line;
+}
+
+.timeline-button:hover {
+    color: #FFB90F !important; /* Dark golden yellow color */
+    font-size: 50px !important; /* Font size on hover */
+}
+
+.content-display {
+    margin-bottom: 70px;
+    margin-left: 20px;
+    width: 950px;
+    text-align: left;
+    border-radius: 5px;
+    display: grid;
+    white-space: pre-line;
+    font-size: 20px;
+    font-weight:200;
+}
+
+/*Tower Of Hanoi*/
+
+
+.game-display01 {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    width: 80%;
+    margin-top: 130px;
+}
+
+
+.game {
+    transition: 0.3s;
+    width: 40%;
+    padding: 5px;
+    margin-right: 200px;
+    margin-bottom: 130px;
+    
+}
+
+.game01 {
+    padding: 10px -10px 5px 5px;
+    font-size: medium;
+    font-weight: 600;
+}
+.game02 {
+    padding: 10px;
+    font-size: small;
+    font-weight: 500;
+}
+
+.game-display02 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    --_width: 400px;
+    min-width: var(--_width);
+    min-height: var(--_width);
+    position: relative;
+}
+.floor{
+    position: absolute;
+    height: 30px;
+    width: 600px;
+    background-color: burlywood;
+    bottom: -30px;
+    border-radius: 100vh;
+}
+
+
+.tower {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    background-color: burlywood;
+    width: 20px;
+    height: var(--_width);
+    border-radius: 100vh;
+    position: relative;
+    cursor: pointer;
+}
+
+
+
+.disk {
+    width: 80%;
+    height: 20px;
+    background-color: black;
+    border-radius: 100vh;
+    margin: 1px 5px;
+    cursor: pointer;
+}
+
+#message {
+    padding-top: 70px;
+    font-size: 20px;
+    color: #FFB90F;
+    font-weight: 400;
+}
+
+
+/*table*/
+
+.table-display{
+    margin-top: 100px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
