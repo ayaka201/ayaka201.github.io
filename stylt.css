@@ -1,10 +1,8 @@
-    /* Most of these styles could be removed but are for the demo to look better */
 
     html,
     body {
     margin: 0;
     height: 100%;
-    font-weight: 300;
     }
     body {
     overflow-x: hidden;
@@ -56,6 +54,8 @@
 
     }
 
+
+
     #panels #panels-container {
     height: 100vh;
     display: -webkit-box;
@@ -66,6 +66,8 @@
     padding: 0;
     overflow: hidden;
     background-color: #ddd;
+    width: 500%;
+    overflow-x: auto;
     }
     #panels #panels-container .panel {
     color: var(--color-just-black);
@@ -168,11 +170,15 @@
         margin: 0;
         padding: 0;
     }
+
+
+
     .about {
         width: 100%;
         max-width: 940px;
         margin-right: auto;
         margin-left: auto;
+        margin-top: 100px;
     }
     
     .about:medium {
@@ -246,7 +252,8 @@
 
     .card {
         transition: 0.3s;
-        width: 45%;
+        width: 25%;
+        height: 300px;
         padding: 5px;
         border-color: #111;
         border-style: solid;
@@ -270,6 +277,21 @@
     .card-a:hover{
         color: #f00;
         transition:all .3s ease-in-out;
+    }
+
+    .paper-buttons{
+        display: flex;
+        flex-direction:row;
+        font-size: 15px;
+    }
+    .paper-buttons div{
+        width: 120px;
+    }
+    .paper-buttons button:hover{
+        color: black;
+        background-color: #ddd;    
+        transition:all 0.5s ease-in-out;
+        border: #111 solid 1px;
     }
 
     /*timeline*/
@@ -320,8 +342,8 @@
 }
 
 .timeline-button:hover {
-    color: #FFB90F !important; /* Dark golden yellow color */
-    font-size: 50px !important; /* Font size on hover */
+    color: #FFB90F !important;
+    font-size: 50px !important; 
 }
 
 .content-display {
@@ -423,12 +445,103 @@
 }
 
 
-/*table*/
+/*contact me*/
+
+.contact-display{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 48%;
+    margin-top: -130px;
+}
 
 .table-display{
-    margin-top: 100px;
+    margin-top: 200px;
     display: flex;
     flex-direction:column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
+    width: 700px;
+    font-size: medium;
+    font-weight: 600;
+}
+
+
+input{
+    height: 30px;
+    width: auto;
+    margin-bottom: 20px;
+    margin-top: 3px;
+    border-style: none;
+    background-color: rgb(62, 62, 62);
+    color: wheat;
+    border-radius: 5vh;
+    padding: 0px 20px;
+    font-weight: 200;
+}
+
+textarea{
+    
+    width: auto;
+    margin-bottom: 20px;
+    margin-top: 3px;
+    border-style: none;
+    background-color: rgb(62, 62, 62);
+    color: wheat;
+    border-radius: 3vh;
+    font-weight: 200;
+    padding: 5px 20px;
+}
+
+
+
+.submit{
+    width: 200px;
+}
+
+.submit:hover{
+    color: black;
+    background-color: #ddd;    
+    transition:all 0.5s ease-in-out;
+    border: #111 solid 1px;
+}
+
+.cont02{
+    height: 30px;
+}
+
+/*FOOTER*/
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.footer-left h3, .footer-right h3 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.footer-left p{
+    font-size: 0.9rem;
+}
+
+.footer-left a{
+    padding: 10px;
+}
+
+.footer-bottom {
+    padding: 10px 0;
+    font-size: 0.8rem;
 }

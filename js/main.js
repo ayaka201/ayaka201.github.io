@@ -26,7 +26,6 @@ document.querySelectorAll(".anchor").forEach(anchor => {
 
 
 
-
 /* Panels */
 const panels = gsap.utils.toArray("#panels-container .panel");
 tween = gsap.to(panels, {
@@ -49,7 +48,7 @@ tween = gsap.to(panels, {
 console.clear();
 
 gsap.utils.toArray(".stb_line_single").forEach((line, i) => {
-  const speed = 2; // (in pixels per second)
+  const speed = 2; 
 
   const links = line.querySelectorAll("a"),
     tl = horizontalLoop(links, { speed: speed, reversed: true, repeat: -1 });
@@ -165,6 +164,47 @@ function horizontalLoop(items, config) {
   return tl;
 }
 
+/*card*/
+
+document.addEventListener("DOMContentLoaded", function() {
+  const cards = document.querySelectorAll('.card');
+  const prevButton = document.getElementById('prevPage');
+  const nextButton = document.getElementById('nextPage');
+  
+  let currentPage = 0; 
+  
+  showPage(currentPage); 
+  
+  prevButton.addEventListener('click', function() {
+      if (currentPage > 0) {
+          currentPage--;
+          showPage(currentPage);
+      }
+  });
+  
+  nextButton.addEventListener('click', function() {
+      if (currentPage < Math.ceil(cards.length / 2) - 1) {
+          currentPage++;
+          showPage(currentPage);
+      }
+  });
+  
+  function showPage(page) {
+      
+      cards.forEach(function(card) {
+          card.style.display = 'none';
+      });
+      
+      const startIndex = page * 4;
+      const endIndex = startIndex + 4;
+      
+      
+      for (let i = startIndex; i < endIndex && i < cards.length; i++) {
+          cards[i].style.display = 'block';
+      }
+  }
+});
+
 
 
 
@@ -192,22 +232,18 @@ function horizontalLoop(items, config) {
             contentDisplay.textContent = content;
             updateTimeline(index);
 
-            // Reset font color and size for all buttons
             buttons.forEach(btn => {
-                btn.style.color = '#000'; // Black color
-                btn.style.fontSize = '20px'; // Default font size
+                btn.style.color = '#000'; 
+                btn.style.fontSize = '20px'; 
             });
 
-            // Set font color and size for the clicked button
-            this.style.color = '#FFB90F'; // Dark golden yellow color
-            this.style.fontSize = '50px'; // Font size 20px
+            this.style.color = '#FFB90F'; 
+            this.style.fontSize = '50px'; 
         });
     });
 
-    // Initialize to show the first 5 items by default
     updateTimeline(0);
 
-    // Trigger click event on the button for 1985
     buttons[0].click();
 });
 
@@ -243,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function createDisk(size) {
       const disk = document.createElement('div');
       disk.classList.add('disk');
-      disk.style.width = `${size * 30}px`; // Adjust width for more disks
+      disk.style.width = `${size * 30}px`;
       disk.dataset.size = size;
       return disk;
   }
@@ -257,10 +293,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function checkGameEnd() {
-      if (towers[1].children.length === 1 || towers[2].children.length === 1) {
+      if (towers[1].children.length === 5 || towers[2].children.length === 5) {
           messageElement.textContent = `恭喜過關 總共移動了 ${moves} 步`;
           towers.forEach(tower => {
-              tower.replaceWith(tower.cloneNode(true));  // Remove event listeners
+              tower.replaceWith(tower.cloneNode(true)); 
           });
       }
   }
@@ -268,32 +304,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /*contact me */
 
-reset;
-$('#send').click(send);
-$('#reset').click(reset);
-$('#reset,#msg2').hide();
-rul=/^\w+((-\w+)|(\.\w+))*\@\w+((-\.|)\w+)*\.[A-Za-z]+$/;
-	function send(){
-		if($('#name').val()=="")alert("請輸入您的姓名");
-		else{
-		if($('#mail').val()==""||mail.value.search(rul)==-1)alert("請輸入正確的電子郵件");
-			else{
-		if($('#bd').val()=="")alert("請輸入您的留言");
-				else{
-					$('#name,#mail,#bd,#send,#msg1').hide();
-					$('#name1,#mai1l,#bd1,#reset,#msg2').show();
-					$('#name1').html($('#name').val());
-					$('#mail1').html($('#mail').val());
-					$('#bd1').html($('#bd').val());
-				}
-				
-			}
-			
-		}
-	}
-	function reset(){
-					$('#name,#mail,#bd,#send,#msg1').show();
-					$('#name1,#mai1l,#bd1,#reset,#msg2').hide();
-					$('#name,#mail,#bd').val("");
-		
-	}
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("contactForm");
+  form.addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      alert("已經送出！");
+      form.reset();
+  });
+});
